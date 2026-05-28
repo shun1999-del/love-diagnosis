@@ -3,7 +3,11 @@ import sqlite3
 import os
 from datetime import datetime, timedelta
 
-DB_PATH = os.getenv("DB_PATH", os.path.join(os.path.dirname(__file__), "analytics.db"))
+_default_db = os.path.join(os.path.dirname(os.path.abspath(__file__)), "analytics.db")
+DB_PATH = os.getenv("DB_PATH", _default_db)
+
+# Ensure parent directory exists
+os.makedirs(os.path.dirname(DB_PATH), exist_ok=True) if os.path.dirname(DB_PATH) else None
 
 
 def get_conn():
