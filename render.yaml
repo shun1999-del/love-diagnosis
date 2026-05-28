@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: love-diagnosis
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DB_PATH
+        value: /data/analytics.db
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1

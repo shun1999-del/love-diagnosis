@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>恋愛タイプ診断</title>
+    <meta property="og:title" content="大切にされない原因がわかる恋愛タイプ診断">
+    <meta property="og:description" content="7つの質問であなたの恋愛パターンがわかります。約30秒で完了。">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- ======== Start Screen ======== -->
+    <div id="start-screen" class="screen active">
+        <div class="container">
+            <h1 class="start-title">
+                大切にされない原因がわかる<br>
+                <span class="highlight">恋愛タイプ診断</span>
+            </h1>
+            <p class="start-benefit">
+                自分のパターンを知るだけで<br>
+                <strong>恋愛の選び方・向き合い方が変わります</strong>
+            </p>
+
+            <!-- 4 Type Preview Cards -->
+            <div class="type-preview-grid">
+                <div class="type-preview-card">
+                    <img class="tp-icon-img" src="{{ url_for('static', filename='img/tsukushi.png') }}" alt="献身の聖女">
+                    <span class="tp-name">献身の聖女</span>
+                </div>
+                <div class="type-preview-card">
+                    <img class="tp-icon-img" src="{{ url_for('static', filename='img/kakunin.png') }}" alt="恋のプロファイラー">
+                    <span class="tp-name">恋のプロファイラー</span>
+                </div>
+                <div class="type-preview-card">
+                    <img class="tp-icon-img" src="{{ url_for('static', filename='img/kyori.png') }}" alt="氷の城の女王">
+                    <span class="tp-name">氷の城の女王</span>
+                </div>
+                <div class="type-preview-card">
+                    <img class="tp-icon-img" src="{{ url_for('static', filename='img/awase.png') }}" alt="恋のカメレオン">
+                    <span class="tp-name">恋のカメレオン</span>
+                </div>
+            </div>
+
+            <p class="start-subtitle">
+                あなたは、どのタイプ？
+            </p>
+
+            <div class="start-meta">
+                <span>&#x1f4dd; 7つの質問</span>
+                <span>&#x23f1;&#xfe0f; 約30秒</span>
+            </div>
+            <button id="start-btn" class="btn-primary btn-bounce">タップして無料で診断する</button>
+        </div>
+    </div>
+
+    <!-- ======== Quiz Screen ======== -->
+    <div id="quiz-screen" class="screen">
+        <div class="container">
+            <div class="question-counter" id="question-counter"></div>
+            <div class="question-wrapper" id="question-wrapper">
+                <p class="question-text" id="question-text"></p>
+                <div class="answers" id="answers"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======== Loading Screen ======== -->
+    <div id="loading-screen" class="screen">
+        <div class="container">
+            <div class="loader-wrapper">
+                <div class="loader"></div>
+                <div class="loader-ring"></div>
+            </div>
+            <p class="loading-text">あなたの恋愛パターンを<br>分析しています...</p>
+            <div class="loading-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======== Result Screen ======== -->
+    <div id="result-screen" class="screen">
+        <div class="container result-container">
+
+            <!-- Header -->
+            <p class="result-label">あなたの診断結果</p>
+            <div class="result-type-badge" id="result-badge"></div>
+            <h2 class="result-name" id="result-name"></h2>
+
+            <!-- Type Icon -->
+            <div class="result-icon" id="result-icon"></div>
+
+            <!-- Pattern description -->
+            <div class="result-card">
+                <p class="result-description" id="result-description"></p>
+            </div>
+
+            <!-- Insight -->
+            <div class="result-card insight-card">
+                <div class="insight-header">
+                    <span class="insight-icon">&#x1f4a1;</span>
+                    <h3>うまくいかない核心</h3>
+                </div>
+                <p class="insight-text" id="result-insight"></p>
+            </div>
+
+            <!-- Weak self-esteem -->
+            <div class="result-card">
+                <h3 class="card-heading">&#x1f511; 育てるべき自己肯定感</h3>
+                <div class="weak-points" id="weak-points"></div>
+            </div>
+
+            <!-- ★ Card Preview ★ -->
+            <div class="card-preview-section">
+                <div class="preview-header">
+                    <span class="preview-sparkle">&#x2728;</span>
+                    <h3 class="preview-title">
+                        あなた専用の<br><span class="highlight">恋愛改善カード</span>を作成しました
+                    </h3>
+                </div>
+
+                <div class="card-preview-wrapper">
+                    <div class="card-glow"></div>
+                    <div class="card-preview" id="card-preview">
+                        <img class="card-img" id="card-img" src="" alt="恋愛改善カード">
+                        <div class="card-fade-overlay">
+                            <a class="lock-badge" id="lock-badge-link" href="#">
+                                <span class="lock-emoji">&#x1f512;</span>
+                                <span class="lock-text">タップしてLINE追加後に全文を見る</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ★ LINE CTA ★ -->
+            <div class="cta-section" id="cta-section">
+                <div class="cta-card">
+                    <div class="cta-free-badge">無料</div>
+                    <h3 class="cta-heading">恋愛改善カードの全文を見る</h3>
+                    <p class="cta-sub">LINE追加するだけで今すぐ全文が読めます</p>
+
+                    <ul class="cta-benefits">
+                        <li>
+                            <span class="cb-icon">&#x1f4d6;</span>
+                            <span>恋愛パターンの詳しい解説</span>
+                        </li>
+                        <li>
+                            <span class="cb-icon">&#x1f9e0;</span>
+                            <span>愛着理論に基づくあなた専用アドバイス</span>
+                        </li>
+                        <li>
+                            <span class="cb-icon">&#x2705;</span>
+                            <span>選ぶべき男性のチェックリスト</span>
+                        </li>
+                        <li>
+                            <span class="cb-icon">&#x1f680;</span>
+                            <span>今日からできる3つの改善ステップ</span>
+                        </li>
+                        <li>
+                            <span class="cb-icon">&#x1f4ad;</span>
+                            <span>認知行動療法を使った思考の整え方</span>
+                        </li>
+                    </ul>
+
+                    <a href="#" id="line-btn" class="btn-line-cta">
+                        <span class="line-icon-box">LINE</span>
+                        <span>無料でカード全文を受け取る</span>
+                    </a>
+                    <p class="cta-note">※ 登録後すぐにお届けします</p>
+                </div>
+            </div>
+
+            <p class="result-footer">※ 診断結果は心理学の愛着理論をベースにしています</p>
+        </div>
+    </div>
+
+    <!-- Hidden config -->
+    <input type="hidden" id="reader-id" value="{{ reader_id }}">
+    <input type="hidden" id="line-url" value="{{ line_url }}">
+
+    <script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+</body>
+</html>

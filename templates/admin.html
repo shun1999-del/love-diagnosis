@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恋愛タイプ診断 - Analytics</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f5f5f5; color: #333; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { font-size: 1.4rem; margin-bottom: 20px; }
+        .filters { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+        .filters a {
+            padding: 6px 16px; border-radius: 20px; text-decoration: none;
+            font-size: 0.85rem; background: #fff; color: #666; border: 1px solid #ddd;
+        }
+        .filters a.active { background: #E8A0BF; color: #fff; border-color: #E8A0BF; }
+        .card { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .card h2 { font-size: 1rem; margin-bottom: 16px; color: #555; }
+        .funnel-table { width: 100%; border-collapse: collapse; }
+        .funnel-table th, .funnel-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #f0f0f0; }
+        .funnel-table th { font-size: 0.75rem; color: #999; text-transform: uppercase; }
+        .funnel-table td { font-size: 0.9rem; }
+        .step-name { font-weight: 600; }
+        .count { font-weight: 700; color: #333; }
+        .rate { color: #999; font-size: 0.85rem; }
+        .rate-good { color: #4CAF50; }
+        .rate-warn { color: #FF9800; }
+        .rate-bad { color: #f44336; }
+        .bar-cell { width: 40%; }
+        .bar-bg { background: #f0f0f0; border-radius: 4px; height: 20px; overflow: hidden; }
+        .bar-fill { height: 100%; background: linear-gradient(90deg, #E8A0BF, #BA90C6); border-radius: 4px; transition: width 0.3s; }
+        .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .type-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: #fafafa; border-radius: 8px; }
+        .type-label { font-weight: 600; font-size: 0.9rem; }
+        .type-count { font-size: 1.2rem; font-weight: 700; color: #BA90C6; }
+        .type-pct { font-size: 0.8rem; color: #999; }
+        .stat-row { display: flex; gap: 16px; margin-bottom: 16px; }
+        .stat-box { flex: 1; text-align: center; padding: 16px; background: #fafafa; border-radius: 8px; }
+        .stat-num { font-size: 1.8rem; font-weight: 700; color: #BA90C6; }
+        .stat-label { font-size: 0.75rem; color: #999; margin-top: 4px; }
+        @media (max-width: 600px) { .type-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>恋愛タイプ診断 Analytics</h1>
+
+    <!-- Period Filter -->
+    <div class="filters">
+        <a href="/admin?days=0" class="{{ 'active' if current_days == '0' }}">今日</a>
+        <a href="/admin?days=7" class="{{ 'active' if current_days == '7' }}">7日間</a>
+        <a href="/admin?days=30" class="{{ 'active' if current_days == '30' }}">30日間</a>
+        <a href="/admin" class="{{ 'active' if current_days == 'all' }}">全期間</a>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="stat-row">
+        <div class="stat-box">
+            <div class="stat-num">{{ total }}</div>
+            <div class="stat-label">総セッション</div>
+        </div>
+        {% set result_count = funnel|selectattr('step','equalto','result')|map(attribute='count')|first or 0 %}
+        <div class="stat-box">
+            <div class="stat-num">{{ result_count }}</div>
+            <div class="stat-label">診断完了</div>
+        </div>
+        {% set line_count = funnel|selectattr('step','equalto','line_click')|map(attribute='count')|first or 0 %}
+        <div class="stat-box">
+            <div class="stat-num">{{ line_count }}</div>
+            <div class="stat-label">LINE登録</div>
+        </div>
+    </div>
+
+    <!-- Funnel -->
+    <div class="card">
+        <h2>Funnel</h2>
+        <table class="funnel-table">
+            <thead>
+                <tr><th>Step</th><th>Sessions</th><th>CR</th><th class="bar-cell">Bar</th></tr>
+            </thead>
+            <tbody>
+            {% set max_count = funnel|map(attribute='count')|max or 1 %}
+            {% for step in funnel %}
+                <tr>
+                    <td class="step-name">{{ step.step }}</td>
+                    <td class="count">{{ step.count }}</td>
+                    <td class="rate {% if step.rate >= 80 %}rate-good{% elif step.rate >= 50 %}rate-warn{% elif step.rate < 50 and step.step != 'fv' %}rate-bad{% endif %}">
+                        {{ step.rate }}%
+                    </td>
+                    <td class="bar-cell">
+                        <div class="bar-bg">
+                            <div class="bar-fill" style="width: {{ (step.count / max_count * 100)|round(1) if max_count > 0 else 0 }}%"></div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Type Distribution -->
+    <div class="card">
+        <h2>タイプ別分布</h2>
+        {% set type_total = type_dist|map(attribute='count')|sum or 1 %}
+        {% set type_names = {'tsukushi': '献身の聖女', 'kakunin': '恋のプロファイラー', 'kyori': '氷の城の女王', 'awase': '恋のカメレオン'} %}
+        <div class="type-grid">
+        {% for t in type_dist %}
+            <div class="type-item">
+                <div>
+                    <div class="type-label">{{ type_names.get(t.type, t.type) }}</div>
+                    <div class="type-pct">{{ (t.count / type_total * 100)|round(1) }}%</div>
+                </div>
+                <div class="type-count">{{ t.count }}</div>
+            </div>
+        {% endfor %}
+        {% if not type_dist %}
+            <p style="color:#999; padding: 12px;">データなし</p>
+        {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
