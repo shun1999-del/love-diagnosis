@@ -79,6 +79,12 @@ def track_event():
     return jsonify({"ok": True})
 
 
+@app.route("/healthz")
+def healthz():
+    """Health check for keep-alive pings."""
+    return "ok", 200
+
+
 @app.route("/api/tag", methods=["POST"])
 def tag_reader():
     """UTAGEリーダーにタイプ別タグを付与する（UTAGE連携時に使用）"""

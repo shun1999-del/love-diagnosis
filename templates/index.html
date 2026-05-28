@@ -11,6 +11,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Critical inline CSS - prevents black screen on cold start */
+        body { margin: 0; background: #FFF0F5; }
+        .screen { display: none; }
+        .screen.active { display: block; }
+        .lp-img { display: block; width: 100%; height: auto; }
+    </style>
 </head>
 <body>
     <!-- Progress Bar -->
