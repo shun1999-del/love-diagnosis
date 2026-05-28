@@ -72,6 +72,22 @@ body {
     display: block;
     padding: 0;
     align-items: stretch;
+    background: #fff;
+}
+
+/* ---- Image-based LP ---- */
+.lp-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.lp-cta-band {
+    padding: 20px 20px 28px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
+}
+.lp-cta-final {
+    padding-bottom: 48px;
 }
 
 .container {

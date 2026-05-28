@@ -21,228 +21,40 @@
     <!-- ======== Start Screen ======== -->
     <div id="start-screen" class="screen active">
 
-        <!-- ===== HERO ===== -->
-        <div class="lp-section lp-hero">
-            <div class="container">
-                <h1 class="start-title">
-                    大切にされない原因がわかる<br>
-                    <span class="highlight">恋愛タイプ診断</span>
-                </h1>
-                <p class="start-benefit">
-                    自分のパターンを知るだけで<br>
-                    <strong>恋愛の選び方・向き合い方が変わります</strong>
-                </p>
-                <div class="start-meta">
-                    <span>&#x1f4dd; 7つの質問</span>
-                    <span>&#x23f1;&#xfe0f; 約30秒</span>
-                    <span>&#x1f4b0; 完全無料</span>
-                </div>
-                <button class="btn-primary btn-bounce btn-cta-lp" onclick="document.getElementById('start-btn').click()">タップして無料で診断する</button>
-            </div>
+        <!-- Hero -->
+        <img src="{{ url_for('static', filename='img/lp/01_hero.png') }}" alt="" class="lp-img">
+        <div class="lp-cta-band">
+            <button class="btn-primary btn-bounce btn-cta-lp" onclick="document.getElementById('start-btn').click()">タップして無料で診断する</button>
         </div>
 
-        <!-- ===== PROBLEM ===== -->
-        <div class="lp-section lp-problem">
-            <div class="container">
-                <h2 class="lp-heading">こんな経験、ありませんか？</h2>
-                <div class="problem-list">
-                    <div class="problem-item">
-                        <span class="problem-check">&#x2714;&#xfe0f;</span>
-                        <span>尽くしているのに「都合のいい女」になってしまう</span>
-                    </div>
-                    <div class="problem-item">
-                        <span class="problem-check">&#x2714;&#xfe0f;</span>
-                        <span>LINEの既読・未読が気になって何も手につかない</span>
-                    </div>
-                    <div class="problem-item">
-                        <span class="problem-check">&#x2714;&#xfe0f;</span>
-                        <span>好きになると逆に冷めてしまう、逃げたくなる</span>
-                    </div>
-                    <div class="problem-item">
-                        <span class="problem-check">&#x2714;&#xfe0f;</span>
-                        <span>いつも相手に合わせてしまい、自分の気持ちがわからない</span>
-                    </div>
-                    <div class="problem-item">
-                        <span class="problem-check">&#x2714;&#xfe0f;</span>
-                        <span>同じパターンの恋愛を繰り返している気がする</span>
-                    </div>
-                </div>
-                <p class="problem-conclusion">
-                    1つでも当てはまるなら、<br>
-                    それは<strong>「性格」ではなく「パターン」</strong>です。<br>
-                    パターンは<strong>知れば変えられます。</strong>
-                </p>
-            </div>
+        <!-- Problem -->
+        <img src="{{ url_for('static', filename='img/lp/02_problem.png') }}" alt="" class="lp-img">
+        <div class="lp-cta-band">
+            <button class="btn-primary btn-bounce btn-cta-lp" onclick="document.getElementById('start-btn').click()">30秒で自分のパターンを知る</button>
         </div>
 
-        <!-- ===== CTA 1 ===== -->
-        <div class="lp-section lp-cta-mid">
-            <div class="container">
-                <button class="btn-primary btn-bounce btn-cta-lp" onclick="document.getElementById('start-btn').click()">30秒で自分のパターンを知る</button>
-            </div>
+        <!-- Logic -->
+        <img src="{{ url_for('static', filename='img/lp/03_logic.png') }}" alt="" class="lp-img">
+
+        <!-- Types -->
+        <img src="{{ url_for('static', filename='img/lp/04_types.png') }}" alt="" class="lp-img">
+        <div class="lp-cta-band">
+            <button class="btn-primary btn-bounce btn-cta-lp" onclick="document.getElementById('start-btn').click()">無料で診断してみる</button>
         </div>
 
-        <!-- ===== LOGIC / DIFFERENCE ===== -->
-        <div class="lp-section lp-logic">
-            <div class="container">
-                <h2 class="lp-heading">他の恋愛診断と何が違う？</h2>
-                <p class="lp-subtext">この診断は心理学の<strong>「愛着理論」</strong>をベースにしています</p>
+        <!-- Result Preview -->
+        <img src="{{ url_for('static', filename='img/lp/05_result.png') }}" alt="" class="lp-img">
 
-                <div class="logic-cards">
-                    <div class="logic-card logic-bad">
-                        <div class="logic-label">よくある診断</div>
-                        <ul>
-                            <li>「あなたは情熱的タイプ！」で終わり</li>
-                            <li>結果が曖昧で何をすればいいかわからない</li>
-                            <li>占いや相性診断がメイン</li>
-                        </ul>
-                    </div>
-                    <div class="logic-card logic-good">
-                        <div class="logic-label">この診断</div>
-                        <ul>
-                            <li><strong>うまくいかない原因</strong>を特定</li>
-                            <li><strong>具体的な改善ステップ</strong>がもらえる</li>
-                            <li>愛着理論×認知行動療法がベース</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="logic-point">
-                    <p>愛着理論とは、幼少期の経験から形成される<br>
-                    <strong>「人との距離感のクセ」</strong>を分析する心理学理論。</p>
-                    <p class="logic-note">恋愛で同じ失敗を繰り返すのは、<br>この<strong>無意識のクセ</strong>が原因です。</p>
-                </div>
-            </div>
+        <!-- Card Preview -->
+        <img src="{{ url_for('static', filename='img/lp/06_card.png') }}" alt="" class="lp-img">
+        <div class="lp-cta-band">
+            <button class="btn-primary btn-bounce btn-cta-lp" onclick="document.getElementById('start-btn').click()">無料で診断してみる</button>
         </div>
 
-        <!-- ===== 4 TYPES ===== -->
-        <div class="lp-section lp-types">
-            <div class="container">
-                <h2 class="lp-heading">あなたはどのタイプ？</h2>
-                <p class="lp-subtext">診断結果は4つのタイプに分かれます</p>
-
-                <div class="type-preview-grid">
-                    <div class="type-preview-card">
-                        <img class="tp-icon-img" src="{{ url_for('static', filename='img/tsukushi.png') }}" alt="献身の聖女">
-                        <span class="tp-name">献身の聖女</span>
-                        <span class="tp-badge">尽くしすぎ</span>
-                    </div>
-                    <div class="type-preview-card">
-                        <img class="tp-icon-img" src="{{ url_for('static', filename='img/kakunin.png') }}" alt="恋のプロファイラー">
-                        <span class="tp-name">恋のプロファイラー</span>
-                        <span class="tp-badge">確認しすぎ</span>
-                    </div>
-                    <div class="type-preview-card">
-                        <img class="tp-icon-img" src="{{ url_for('static', filename='img/kyori.png') }}" alt="氷の城の女王">
-                        <span class="tp-name">氷の城の女王</span>
-                        <span class="tp-badge">距離とりすぎ</span>
-                    </div>
-                    <div class="type-preview-card">
-                        <img class="tp-icon-img" src="{{ url_for('static', filename='img/awase.png') }}" alt="恋のカメレオン">
-                        <span class="tp-name">恋のカメレオン</span>
-                        <span class="tp-badge">合わせすぎ</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== RESULT PREVIEW ===== -->
-        <div class="lp-section lp-result-preview">
-            <div class="container">
-                <h2 class="lp-heading">診断でわかること</h2>
-                <p class="lp-subtext">タイプ別に詳しい分析結果をお届けします</p>
-
-                <div class="result-preview-list">
-                    <div class="rp-item">
-                        <span class="rp-icon">&#x1f50d;</span>
-                        <div>
-                            <strong>あなたの恋愛パターン</strong>
-                            <p>無意識にやっている行動と、その心理的な原因</p>
-                        </div>
-                    </div>
-                    <div class="rp-item">
-                        <span class="rp-icon">&#x1f4a1;</span>
-                        <div>
-                            <strong>うまくいかない核心</strong>
-                            <p>なぜいつも同じ結末になるのか、根本原因を解説</p>
-                        </div>
-                    </div>
-                    <div class="rp-item">
-                        <span class="rp-icon">&#x1f511;</span>
-                        <div>
-                            <strong>育てるべき自己肯定感</strong>
-                            <p>あなたに足りない自己肯定感の種類を特定</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Blurred card preview -->
-                <div class="lp-card-preview-wrapper">
-                    <p class="lp-card-label">さらにLINE追加で<strong>恋愛改善カード</strong>をプレゼント</p>
-                    <div class="lp-card-preview">
-                        <img src="{{ url_for('static', filename='img/card_tsukushi.png') }}" alt="恋愛改善カード サンプル" class="lp-card-img">
-                        <div class="lp-card-blur-overlay"></div>
-                    </div>
-                    <div class="lp-card-contents">
-                        <div class="lp-cc-item"><span>&#x1f4d6;</span> 恋愛パターンの詳しい解説</div>
-                        <div class="lp-cc-item"><span>&#x1f9e0;</span> 愛着理論に基づくアドバイス</div>
-                        <div class="lp-cc-item"><span>&#x2705;</span> 選ぶべき男性のチェックリスト</div>
-                        <div class="lp-cc-item"><span>&#x1f680;</span> 今日からできる3つの改善ステップ</div>
-                        <div class="lp-cc-item"><span>&#x1f4ad;</span> 認知行動療法で思考を整える方法</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== CTA 2 ===== -->
-        <div class="lp-section lp-cta-mid">
-            <div class="container">
-                <button class="btn-primary btn-bounce btn-cta-lp" onclick="document.getElementById('start-btn').click()">無料で診断してみる</button>
-            </div>
-        </div>
-
-        <!-- ===== REVIEWS ===== -->
-        <div class="lp-section lp-reviews">
-            <div class="container">
-                <h2 class="lp-heading">体験者の声</h2>
-                <div class="reviews-section">
-                    <div class="review-card">
-                        <div class="review-header">
-                            <span class="review-avatar">M</span>
-                            <span class="review-name">M.Sさん (27歳)</span>
-                        </div>
-                        <p class="review-text">いつも「尽くしすぎて都合のいい女になる」の繰り返しだったけど、診断で<strong>自分のパターンが言語化されて</strong>すごく腑に落ちた。何を変えればいいか初めてわかった気がする。</p>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-header">
-                            <span class="review-avatar">A</span>
-                            <span class="review-name">A.Kさん (24歳)</span>
-                        </div>
-                        <p class="review-text">「好きかわからなくなる」が口癖だった私。距離を取るのは<strong>自分を守る防衛反応</strong>だったんだ…って知れただけで気持ちが楽になりました。</p>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-header">
-                            <span class="review-avatar">R</span>
-                            <span class="review-name">R.Tさん (31歳)</span>
-                        </div>
-                        <p class="review-text">友達に勧められて軽い気持ちでやったら、<strong>当たりすぎて怖かった</strong>。自分が恋愛で同じ失敗を繰り返してた理由がわかって、彼との関係を見直すきっかけになった。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== FINAL CTA ===== -->
-        <div class="lp-section lp-final-cta">
-            <div class="container">
-                <p class="final-cta-lead">恋愛がうまくいかないのは<br>あなたのせいじゃない。</p>
-                <p class="final-cta-sub">ただ、<strong>自分のパターンを知らなかっただけ。</strong></p>
-                <div class="start-meta">
-                    <span>&#x1f4dd; 7つの質問</span>
-                    <span>&#x23f1;&#xfe0f; 約30秒</span>
-                    <span>&#x1f4b0; 完全無料</span>
-                </div>
-                <button id="start-btn" class="btn-primary btn-bounce btn-cta-lp btn-final">タップして無料で診断する</button>
-            </div>
+        <!-- Reviews + Closing -->
+        <img src="{{ url_for('static', filename='img/lp/07_reviews.png') }}" alt="" class="lp-img">
+        <div class="lp-cta-band lp-cta-final">
+            <button id="start-btn" class="btn-primary btn-bounce btn-cta-lp btn-final">タップして無料で診断する</button>
         </div>
 
     </div>
