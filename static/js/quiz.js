@@ -275,15 +275,14 @@ function showResult(type) {
     $("card-img").src = CARD_IMAGES[type];
     $("card-img").alt = data.name + " 恋愛改善カード";
 
-    // Lock badge link
-    $("lock-badge-link").href = LINE_URLS[type];
-
     // CTA section
     const ctaSection = $("cta-section");
+    const stepsSection = $("line-steps-section");
 
     if (readerId) {
         // From UTAGE: tag and show sent message
         tagUtageReader(readerId, type);
+        if (stepsSection) stepsSection.style.display = "none";
         ctaSection.innerHTML = `
             <div class="utage-sent-card">
                 <div class="sent-icon">&#x2705;</div>
@@ -297,9 +296,6 @@ function showResult(type) {
         lineBtn.href = LINE_URLS[type];
         lineBtn.addEventListener("click", () => trackEvent("line_click", type));
     }
-
-    // Lock badge also tracks line_click
-    $("lock-badge-link").addEventListener("click", () => trackEvent("line_click", type));
 
     // Track result
     trackEvent("result", type);

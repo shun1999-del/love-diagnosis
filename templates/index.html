@@ -133,10 +133,31 @@
                     <div class="card-preview" id="card-preview">
                         <img class="card-img" id="card-img" src="" alt="恋愛改善カード">
                         <div class="card-fade-overlay">
-                            <a class="lock-badge" id="lock-badge-link" href="#">
+                            <div class="lock-badge">
                                 <span class="lock-emoji">&#x1f512;</span>
-                                <span class="lock-text">タップしてLINE追加後に全文を見る</span>
-                            </a>
+                                <span class="lock-text">全文はLINE追加で見れます</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="card-unlock-note">カードの全文を見るには<br><strong>LINE追加</strong>が必要です（無料）</p>
+            </div>
+
+            <!-- ★ LINE Steps ★ -->
+            <div class="line-steps-section" id="line-steps-section">
+                <div class="steps-card">
+                    <h3 class="steps-heading">LINE追加の手順</h3>
+                    <p class="steps-sub">下のボタンをタップした後、<br>この<strong>2つの手順</strong>でLINE追加できます</p>
+
+                    <div class="steps-grid">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <img src="{{ url_for('static', filename='img/step1.png') }}" alt="右上の3本線をタップ" class="step-img">
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <img src="{{ url_for('static', filename='img/step2.png') }}" alt="ブラウザで開くをタップ" class="step-img">
                         </div>
                     </div>
                 </div>
@@ -145,38 +166,11 @@
             <!-- ★ LINE CTA ★ -->
             <div class="cta-section" id="cta-section">
                 <div class="cta-card">
-                    <div class="cta-free-badge">無料</div>
-                    <h3 class="cta-heading">恋愛改善カードの全文を見る</h3>
-                    <p class="cta-sub">LINE追加するだけで今すぐ全文が読めます</p>
-
-                    <ul class="cta-benefits">
-                        <li>
-                            <span class="cb-icon">&#x1f4d6;</span>
-                            <span>恋愛パターンの詳しい解説</span>
-                        </li>
-                        <li>
-                            <span class="cb-icon">&#x1f9e0;</span>
-                            <span>愛着理論に基づくあなた専用アドバイス</span>
-                        </li>
-                        <li>
-                            <span class="cb-icon">&#x2705;</span>
-                            <span>選ぶべき男性のチェックリスト</span>
-                        </li>
-                        <li>
-                            <span class="cb-icon">&#x1f680;</span>
-                            <span>今日からできる3つの改善ステップ</span>
-                        </li>
-                        <li>
-                            <span class="cb-icon">&#x1f4ad;</span>
-                            <span>認知行動療法を使った思考の整え方</span>
-                        </li>
-                    </ul>
-
                     <a href="#" id="line-btn" class="btn-line-cta">
                         <span class="line-icon-box">LINE</span>
-                        <span>無料でカード全文を受け取る</span>
+                        <span>タップしてLINE追加する</span>
                     </a>
-                    <p class="cta-note">※ 登録後すぐにお届けします</p>
+                    <p class="cta-note">※ 追加後すぐにカード全文をお届けします</p>
                 </div>
             </div>
 

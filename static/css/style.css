@@ -724,6 +724,82 @@ body {
     color: var(--text-light);
 }
 
+/* ---- Card Unlock Note ---- */
+.card-unlock-note {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-light);
+    margin-top: 16px;
+    line-height: 1.6;
+}
+.card-unlock-note strong {
+    color: var(--line-green);
+}
+
+/* ---- LINE Steps Section ---- */
+.line-steps-section {
+    margin-top: 28px;
+}
+.steps-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 24px 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 2px solid rgba(232, 160, 191, 0.3);
+}
+.steps-heading {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+.steps-sub {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+.steps-sub strong {
+    color: var(--primary);
+    font-weight: 700;
+}
+.steps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+.step-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fafafa;
+    border: 1px solid #eee;
+}
+.step-number {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.step-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* ---- Result Footer ---- */
 .result-footer {
     font-size: 11px;
