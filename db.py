@@ -4,10 +4,17 @@ import os
 from datetime import datetime, timedelta
 
 _default_db = os.path.join(os.path.dirname(os.path.abspath(__file__)), "analytics.db")
-DB_PATH = os.getenv("DB_PATH", _default_db)
+_env_db = os.getenv("DB_PATH", "")
 
-# Ensure parent directory exists
-os.makedirs(os.path.dirname(DB_PATH), exist_ok=True) if os.path.dirname(DB_PATH) else None
+# Use env DB_PATH if writable, otherwise fallback to project dir
+if _env_db:
+    try:
+        os.makedirs(os.path.dirname(_env_db), exist_ok=True)
+        DB_PATH = _env_db
+    except OSError:
+        DB_PATH = _default_db
+else:
+    DB_PATH = _default_db
 
 
 def get_conn():
