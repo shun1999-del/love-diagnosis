@@ -68,6 +68,11 @@ body {
     justify-content: center;
 }
 .screen.active { display: flex; }
+#start-screen.active {
+    display: block;
+    padding: 0;
+    align-items: stretch;
+}
 
 .container {
     width: 100%;
@@ -157,6 +162,290 @@ body {
     color: var(--text);
     line-height: 1.8;
     margin-bottom: 16px;
+}
+
+/* ---- Type Badge ---- */
+.tp-badge {
+    display: block;
+    font-size: 10px;
+    color: var(--primary-dark);
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+/* ============================================
+   LP Sections
+   ============================================ */
+.lp-section {
+    padding: 40px 20px;
+}
+.lp-section .container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center;
+}
+.lp-hero {
+    padding-top: 48px;
+    padding-bottom: 32px;
+    background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+}
+.lp-heading {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+.lp-subtext {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    line-height: 1.7;
+}
+.lp-subtext strong {
+    color: var(--primary-dark);
+}
+.btn-cta-lp {
+    max-width: 320px;
+}
+.btn-final {
+    font-size: 18px;
+    padding: 20px 32px;
+}
+
+/* ---- Problem Section ---- */
+.lp-problem {
+    background: #fff;
+}
+.problem-list {
+    text-align: left;
+    max-width: 340px;
+    margin: 0 auto 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.problem-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+}
+.problem-check {
+    flex-shrink: 0;
+    font-size: 16px;
+}
+.problem-conclusion {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text);
+    padding: 20px 16px;
+    background: linear-gradient(135deg, rgba(232,160,191,0.08), rgba(186,144,198,0.08));
+    border-radius: var(--radius);
+    border-left: 4px solid var(--primary);
+}
+.problem-conclusion strong {
+    color: var(--primary-dark);
+}
+
+/* ---- CTA Mid ---- */
+.lp-cta-mid {
+    padding: 24px 20px;
+    background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
+}
+
+/* ---- Logic Section ---- */
+.lp-logic {
+    background: #fff;
+}
+.logic-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.logic-card {
+    border-radius: var(--radius-sm);
+    padding: 18px 16px;
+    text-align: left;
+}
+.logic-label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+.logic-bad {
+    background: #f9f0f0;
+    border: 1px solid #ecc;
+}
+.logic-bad .logic-label {
+    background: #e8c4c4;
+    color: #8b4444;
+}
+.logic-bad ul { color: #888; }
+.logic-good {
+    background: linear-gradient(135deg, rgba(232,160,191,0.1), rgba(186,144,198,0.1));
+    border: 2px solid var(--primary);
+}
+.logic-good .logic-label {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+}
+.logic-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.logic-card li::before {
+    content: "・";
+}
+.logic-good li strong {
+    color: var(--primary-dark);
+}
+.logic-point {
+    padding: 20px 16px;
+    background: #fafafa;
+    border-radius: var(--radius);
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text);
+}
+.logic-point strong {
+    color: var(--primary-dark);
+}
+.logic-note {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* ---- Types Section ---- */
+.lp-types {
+    background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
+}
+
+/* ---- Result Preview ---- */
+.lp-result-preview {
+    background: #fff;
+}
+.result-preview-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+    text-align: left;
+}
+.rp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    background: #fafafa;
+    border-radius: var(--radius-sm);
+}
+.rp-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.rp-item strong {
+    font-size: 14px;
+    color: var(--text);
+    display: block;
+    margin-bottom: 4px;
+}
+.rp-item p {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* ---- LP Card Preview ---- */
+.lp-card-preview-wrapper {
+    background: linear-gradient(135deg, rgba(232,160,191,0.08), rgba(186,144,198,0.08));
+    border-radius: var(--radius);
+    padding: 20px 16px;
+    border: 1px dashed var(--primary);
+}
+.lp-card-label {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+.lp-card-label strong {
+    color: var(--primary-dark);
+}
+.lp-card-preview {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.lp-card-img {
+    width: 100%;
+    display: block;
+    filter: blur(6px);
+}
+.lp-card-blur-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 20%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.95) 100%);
+}
+.lp-card-contents {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+.lp-cc-item {
+    font-size: 13px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.lp-cc-item span {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+/* ---- Reviews Section ---- */
+.lp-reviews {
+    background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
+}
+
+/* ---- Final CTA ---- */
+.lp-final-cta {
+    background: #fff;
+    padding: 48px 20px;
+}
+.final-cta-lead {
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+.final-cta-sub {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+.final-cta-sub strong {
+    color: var(--primary-dark);
 }
 
 /* ---- Reviews ---- */
